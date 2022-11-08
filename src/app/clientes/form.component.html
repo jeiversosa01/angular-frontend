@@ -2,8 +2,7 @@
     <div class="card-header"> {{ title }}</div>
     <div class="card-body">
 
-        <form>
-            
+        <form>            
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
                 <div class="col-sm-6">
@@ -28,7 +27,6 @@
             <div class="form-group row">
                 <div class="col-sm-6">
                     <button class="btn btn-success" (click)="create()" *ngIf="!cliente.id else elseBlock" role="button">Crear</button>
-
                     <ng-template #elseBlock>
                         <button class="btn btn-primary" role="button" (click)="update()">Listo</button>
                     </ng-template>
