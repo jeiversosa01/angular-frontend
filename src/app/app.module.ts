@@ -14,6 +14,10 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms' // Instala el modulo para crear formularios.
+import { registerLocaleData } from '@angular/common'; 
+import localeES from '@angular/common/locales/es'; // Formato fecha en español
+
+registerLocaleData(localeES, 'es');
 
 // Rutas creadas para trabajar en la aplicacíon
 const routes: Routes = [

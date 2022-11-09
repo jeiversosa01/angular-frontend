@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { formatDate } from '@angular/common'; 
 import { Cliente } from './cliente';
 import { CLIENTES } from './cliente.json';
 import { Observable, of, map, catchError, throwError } from 'rxjs';
@@ -6,9 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ClienteService {
 
   private urlEndPoint:string = 'http://localhost:8080/api/clientes';
@@ -17,13 +16,20 @@ export class ClienteService {
   constructor(private http:HttpClient, private router:Router) { }
 
   getClientes(): Observable<Cliente[]> {
-    // return of(CLIENTES);   // Datos estáticos en cliente.json.ts
 
-    return this.http.get<Cliente[]>(this.urlEndPoint); // Más sencilla
-    
-    // return this.http.get(this.urlEndPoint).pipe(  // Más complicada
-    //   map(response => response as Cliente[])
-    // );
+    // return of(CLIENTES);   // Datos estáticos en cliente.json.ts
+    // return this.http.get<Cliente[]>(this.urlEndPoint); // Más sencilla
+
+    return this.http.get(this.urlEndPoint).pipe( // Más complicada     
+      map(response => { // Para transformar datos en la vista
+        let clientes = response as Cliente[];        
+        return clientes.map(cliente => { 
+          cliente.nombre = cliente.nombre.toUpperCase(); // Mayusculas          
+          cliente.createAt = formatDate(cliente.createAt, 'EEEE dd, MMMM yyyy', 'es'); // formato fecha
+          return cliente;
+        });
+      })
+    );
   }
 
   create(cliente: Cliente): Observable<Cliente> {

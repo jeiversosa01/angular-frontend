@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ cliente.id }}</td>
                     <td>{{ cliente.nombre }}</td>
-                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.apellido | uppercase  }}</td> <!-- Transforma datos en el front -->
                     <td>{{ cliente.email }}</td>
                     <td>{{ cliente.createAt }}</td>
                     <td>                    
