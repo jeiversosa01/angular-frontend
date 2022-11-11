@@ -14,8 +14,9 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms' // Instala el modulo para crear formularios.
-import { registerLocaleData } from '@angular/common'; 
-import localeES from '@angular/common/locales/es'; // Formato fecha en español
+import { registerLocaleData } from '@angular/common';
+import localeES from '@angular/common/locales/es';
+import { PaginatorComponent } from './paginator/paginator.component'; // Formato fecha en español
 
 registerLocaleData(localeES, 'es');
 
@@ -24,6 +25,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/clientes', pathMatch: 'full'},
   {path: 'directivas', component: DirectivaComponent},
   {path: 'clientes', component: ClientesComponent},
+  {path: 'clientes/page', component: ClientesComponent},
+  {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'clientes/form', component: FormComponent},
   {path: 'clientes/form/:id', component: FormComponent}
 ];
@@ -37,7 +40,8 @@ const routes: Routes = [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent
   ],
 
   // Aquí se importan los servicios y las routes

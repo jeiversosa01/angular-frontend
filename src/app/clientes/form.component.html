@@ -1,4 +1,4 @@
-<ul class="alert alert-danger" *ngIf="errores?.length != 0"> <!-- Manejo de errores desde el backend -->
+<ul class="alert alert-danger" *ngIf="errores?.length != null"> <!-- Manejo de errores desde el backend -->
     <li *ngFor="let err of errores">
         {{ err }}
     </li>

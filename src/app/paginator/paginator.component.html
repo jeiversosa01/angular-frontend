@@ -1,0 +1,16 @@
+<ul *ngIf="paginas.length > 0" class="pagination">
+
+  <li class="page-link" *ngIf="paginador.number > 0">
+    <a [routerLink]="['/clientes/page', paginador.number-1]" >&laquo;</a>
+  </li>
+
+  <li class="page-item" *ngFor="let numPagina of paginas">
+    <span class="page-link" *ngIf="numPagina-1 == paginador.number">{{ numPagina }}</span>
+    <a class="page-link" *ngIf="numPagina-1 != paginador.number" [routerLink]="['/clientes/page', numPagina-1]" >{{ numPagina }}</a>
+  </li>
+
+  <li class="page-link" *ngIf="paginador.number < paginador.totalPages-1">
+    <a [routerLink]="['/clientes/page', paginador.number + 1]" >&raquo;</a>
+  </li>
+
+</ul>
