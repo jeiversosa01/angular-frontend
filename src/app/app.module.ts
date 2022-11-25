@@ -16,7 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms' // Instala el modulo para crear formularios.
 import { registerLocaleData } from '@angular/common';
 import localeES from '@angular/common/locales/es';
-import { PaginatorComponent } from './paginator/paginator.component'; // Formato fecha en español
+import { PaginatorComponent } from './paginator/paginator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Formato fecha en español
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 registerLocaleData(localeES, 'es');
 
@@ -50,7 +53,10 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,    
+    MatMomentDateModule,
+    MatDatepickerModule
   ],
 
   providers: [ClienteService],
